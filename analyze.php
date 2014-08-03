@@ -41,3 +41,13 @@ echo "facebook comment" . $facebook_comment. "<br>";
 echo "delicious favorite " . $delicious. "<br>";
 echo "Linkedin ".$linkedin. "<br>";
 
+/*
+  Get Website's speed data using Google Page Speed API
+ */
+$PageSpeed_key='AIzaSyBw26o4OvXNoEHlyHb0P-DG1hJsod7ISUA';
+$PageSpeed_API_url='https://www.googleapis.com/pagespeedonline/v1/runPagespeed?url=http://'.$url.'&amp;amp;key='.$PageSpeed_key;
+$PageSpeed_data=  file_get_contents($PageSpeed_API_url);
+$PageSpeed_json=  json_decode($PageSpeed_data);
+$PageSpeed_score=$PageSpeed_json->score;
+
+echo "Pagespeed Score".$PageSpeed_score;
